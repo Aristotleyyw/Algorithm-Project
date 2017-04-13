@@ -12,9 +12,11 @@ import Graph.Square.node;
 
 public class Disk extends Applet{
 
+	//nodes number and average degree
 	int N=4000;
 	int avedegree=128;
 	
+	//draw nodes in disk
 	public void paint(Graphics g)
 	{
 		//define node
@@ -51,30 +53,26 @@ public class Disk extends Applet{
 			x=r.nextInt(1000)+50;
 			y=r.nextInt(1000)+50;
 			double R = Math.sqrt(Math.pow((Math.abs(x-550)),2) + Math.pow((Math.abs(y-550)),2));
-           if(R<500)
-           {
-        	  
-            g.setColor(Color.ORANGE);
+          	 if(R<500)
+          	 {        	  
+           	 g.setColor(Color.ORANGE);
 			px[i]=x;
 			py[i]=y;
 			list[i]= new node();
 			list[i].x=x;
 			list[i].y=y;
 			l.add( list[i]);
-			i++;
-			
-           }
+			i++;			
+          	 }
            
-		}
+	}
 		
 		 //censor coverage
 		 //draw lines
 		 double dis = Math.sqrt((avedegree*500*500)/N);
 		 for(int ii = 0; ii < N; ii ++){
-	         	for(int j = 0; j < N; j ++){
-	         		
-	         		
-	         		double dd = Math.sqrt(Math.pow((Math.abs(px[ii]-px[j])),2) + Math.pow((Math.abs(py[ii]-py[j])),2));
+	         	for(int j = 0; j < N; j ++){	         		
+	         	double dd = Math.sqrt(Math.pow((Math.abs(px[ii]-px[j])),2) + Math.pow((Math.abs(py[ii]-py[j])),2));
 	              
 	                if(dd<dis)
 	                {
@@ -94,7 +92,7 @@ public class Disk extends Applet{
 		 }
 		 
 		 //find max and min degree nodes
-		   class findMaxMinnode {
+		    class findMaxMinnode {
 	            int mindegree = 10000, maxdegree = 1;
 	            int minnum = 0, maxnum = 0;
 	            int smu = 0;
@@ -136,8 +134,8 @@ public class Disk extends Applet{
 	            }
 	        }
 	     
-		   findMaxMinnode f = new findMaxMinnode();
-	       f.paint();
+		findMaxMinnode f = new findMaxMinnode();
+	       	f.paint();
 	        
 		//find the vertex order through small least algorithm
 		 class sml
