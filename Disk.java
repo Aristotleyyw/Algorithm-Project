@@ -27,10 +27,10 @@ public class Disk extends Applet{
 			public void addAdj(node ver){
 		        if(next == null)next = new ArrayList<node>() ;
 		        next.add(ver);
-		    }
+		    	}
 			public ArrayList<node> getAdj(){
 		        return next;
-		    }
+		   	}
 			public int returndegree(){
 				return next.size();
 			}
