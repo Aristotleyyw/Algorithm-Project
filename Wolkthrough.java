@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
  
-
+//show the whole process of color nodes and draw its backbone
 public class Wolkthrough extends Applet {
+	
 	int N=20;
 	int avedegree=32;
 	
+	//define node
 	class node{
 		int x,y;
 		int color=0;
@@ -27,6 +29,7 @@ public class Wolkthrough extends Applet {
 		}
 		}//node structure
 	
+	//draw rectangle and random nodes
 	 public void paint(Graphics g)
 	{
 		g.setColor(Color.BLACK);
@@ -51,18 +54,14 @@ public class Wolkthrough extends Applet {
 			list[i].index=i;
 			//System.out.println(y);
 
-		}
-		//double distance = Math.sqrt((avedegree*1000*1000)/(N*3.14));
-		//System.out.println("R/distance"+distance);
-		
+		}		
 		double distance=400;
 		int edge=0;
 		 for(int i = 0; i < N; i ++){
          	for(int j = 0; j < N; j ++){
          		
-
-            	double d = Math.sqrt(Math.pow((Math.abs(list[i].x-list[j].x)),2) + Math.pow((Math.abs(list[i].y-list[j].y)),2));//两点距离
-                
+            	double d = Math.sqrt(Math.pow((Math.abs(list[i].x-list[j].x)),2) + Math.pow((Math.abs(list[i].y-list[j].y)),2));//涓ょ偣璺濈
+                //draw line
                 if(d<distance)
                 {
                 	g.setColor(Color.LIGHT_GRAY);
@@ -81,14 +80,13 @@ public class Wolkthrough extends Applet {
 		}
 		for(int i=0;i<N;i++)
 		{
-	//System.out.println("Node"+i+": ");
 			for(int j=0;j<l.get(i).next.size();j++)
 			{
 				int xb =l.get(i).next.get(j).index;
 				System.out.print(xb+" ");
 			}
 			System.out.println();
-		}
+		}		 
 		class findMaxMinnode{
 			 int mindegree=30,maxdegree=1;
 			 int minnum=0,maxnum=0;
@@ -312,7 +310,7 @@ public class Wolkthrough extends Applet {
 						 
 					 }
 				 }
-				 int[] acc=new int[16];//acc存放六个bipartite的edges
+				 int[] acc=new int[16];//acc瀛樻斁鍏釜bipartite鐨別dges
 				
 				 for(int j=0;j<4;j++){
 					 for(int i=j+1;i<=3;i++){
@@ -347,14 +345,14 @@ public class Wolkthrough extends Applet {
 		 g.setColor(Color.BLACK);
 		 g.drawRect(1200, 100, 1000, 1000);
 			
-	     //画出backbone
+	     //鐢诲嚭backbone
 		 for(int jj=0;jj<b.b.size();jj++){
 			 ArrayList<node> next=b.b.get(jj).next;
 			 for (node n:b.a){
 				 if(next.contains(n))
 				 {
 					 g.setColor(Color.orange);
-					 Graphics2D g2 = (Graphics2D)g;  //g是Graphics对象  
+					 Graphics2D g2 = (Graphics2D)g;  //g鏄疓raphics瀵硅薄  
 			         g2.setStroke(new BasicStroke(4.0f)); 
 	                 g.drawLine(n.x+1100,n.y,b.b.get(jj).x+1100,b.b.get(jj).y);
 	                 g.setColor(Color.GREEN);
